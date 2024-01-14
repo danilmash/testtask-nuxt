@@ -1,0 +1,59 @@
+@use '../abstract/variables';
+
+
+
+.minmax-slider {
+    position: relative;
+    --trackHeight: 0.2rem;
+    --thumbRadius: 0.8rem;
+    width: 100px;
+
+    
+
+    input {
+        
+        position: absolute;
+        pointer-events: none;
+        appearance: none;
+
+        &::before {
+            content: "";
+            position: absolute;
+            height: var(--trackHeight);
+            background: map-get($map: variables.$colors, $key: primary);
+            border-radius: 100px;
+            left: var(--progressLeft);
+            right: var(--progressRight);
+            width: var(--sliderWidth);
+        }  
+
+        &::-webkit-slider-runnable-track {
+            appearance: none;
+            background: #1d0f1b;
+            height: var(--trackHeight);
+            border-radius: 100px;
+
+        }
+
+        &::-moz-range-track {
+            appearance: none;
+            background: #1d0f1b;;
+            height: var(--trackHeight);
+            border-radius: 100px;
+        }
+
+        &::-webkit-slider-thumb {
+            position: relative;
+            top: 50%;
+            transform: translate(0, -50%);
+            width: var(--thumbRadius);
+            height: var(--thumbRadius);
+            /* margin-top: calc((var(--trackHeight) - var(--thumbRadius)) / 2); */
+            background: map-get($map: variables.$colors, $key: primary);
+            border-radius: 50%;
+            pointer-events: all;
+            appearance: none;
+            z-index: 1;
+        }
+    }
+}

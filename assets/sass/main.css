@@ -1,1 +1,51 @@
-/*# sourceMappingURL=main.css.map */
+.minmax-slider {
+  position: relative;
+  --trackHeight: 0.2rem;
+  --thumbRadius: 0.8rem;
+  width: 100px;
+}
+.minmax-slider input {
+  position: absolute;
+  pointer-events: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.minmax-slider input::before {
+  content: "";
+  position: absolute;
+  height: var(--trackHeight);
+  background: #C05AFF;
+  border-radius: 100px;
+  left: var(--progressLeft);
+  right: var(--progressRight);
+  width: var(--sliderWidth);
+}
+.minmax-slider input::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+          appearance: none;
+  background: #1d0f1b;
+  height: var(--trackHeight);
+  border-radius: 100px;
+}
+.minmax-slider input::-moz-range-track {
+  -moz-appearance: none;
+       appearance: none;
+  background: #1d0f1b;
+  height: var(--trackHeight);
+  border-radius: 100px;
+}
+.minmax-slider input::-webkit-slider-thumb {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: var(--thumbRadius);
+  height: var(--thumbRadius);
+  /* margin-top: calc((var(--trackHeight) - var(--thumbRadius)) / 2); */
+  background: #C05AFF;
+  border-radius: 50%;
+  pointer-events: all;
+  -webkit-appearance: none;
+          appearance: none;
+  z-index: 1;
+}/*# sourceMappingURL=main.css.map */
