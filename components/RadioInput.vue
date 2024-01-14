@@ -1,5 +1,5 @@
 <template lang="">
-    <input type="checkbox" v-model='model' :value='value' :id='id' />
+    <input type="radio" v-model='model' :value='value' :id='id' />
     <label :for='id'>{{ label }}</label>
 </template>
 <script setup>

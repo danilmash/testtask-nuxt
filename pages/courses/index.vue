@@ -1,11 +1,13 @@
 <template lang="">
     <div class="main-container">
-        <Checkbox :value='true' label="asd" id='kek'/>
-        <MinMaxSlider :minValue='1' :maxValue='6' :step="1" :adjustment="1"/>
+        <Checkbox v-model="checkboxValue" label="qweqw" id='kek' :value="'qqqqq'"/>
+        <RadioInput v-model="asddsa" label="qweqw" id='kek' :value="'wqqewqew'"/>
+        <RadioInput v-model="asddsa" label="qweqw" id='kek' :value="'qweqwqwe'"/>
     </div>
 </template>
 <script setup>
-    let qwe = ref(null)
+    let asddsa  = ref([])
+    let checkboxValue  = ref([])
 </script>
 <style lang="scss">
     
