@@ -4,3 +4,8 @@
     justify-content: $justify;
     align-items: $align;
 }
+
+@mixin baseFont() {
+    font-size: 1rem;
+    font-weight: 600;
+}

@@ -1,3 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@500;600;800&display=swap");
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.wrapper {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s;
+}
+.link:hover {
+  color: #C05AFF;
+}
+
+button {
+  background: none;
+  outline: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+}
+
+html {
+  font-family: "Mulish";
+}
+
+body {
+  font-size: 18px;
+}
+
+* {
+  font-family: "Mulish";
+}
+
 .minmax-slider {
   position: relative;
   --trackHeight: 0.2rem;
@@ -48,4 +142,175 @@
   -webkit-appearance: none;
           appearance: none;
   z-index: 1;
+}
+
+.header {
+  background-color: black;
+  padding-top: 44px;
+}
+.header__logo-link {
+  width: clamp(130px, 30vw, 220px);
+}
+.header__wrapper {
+  background-color: white;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+.header__navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: clamp(20px, 5vw, 60px);
+  overflow: hidden;
+}
+@media (max-width: 741px) {
+  .header__navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 64px;
+    transform: translateX(-50%);
+    margin-left: 0;
+    height: 0;
+    width: 100%;
+    background-color: white;
+    transition: 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+}
+.header__buttons-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(10px, 1.5vw, 50px);
+  margin-left: clamp(20px, 5vw, 60px);
+}
+@media (max-width: 741px) {
+  .header__buttons-group {
+    margin-top: clamp(20px, 5vw, 60px);
+    margin-left: 0;
+  }
+}
+.header__desktop-profile {
+  width: clamp(20px, 6.6vw, 52px);
+}
+@media (max-width: 741px) {
+  .header__desktop-profile {
+    display: none;
+  }
+}
+.header__mobile-profile {
+  width: clamp(20px, 6.6vw, 52px);
+}
+.header__mobile-content {
+  gap: 18px;
+  display: none;
+}
+@media (max-width: 741px) {
+  .header__mobile-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .header__mobile-content:has(.burger-button__toggle) ~ .navigation ul li {
+    height: 0;
+    margin: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .header__mobile-content:has(.burger-button__toggle:checked) ~ .header__navigation {
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 15px 0;
+  }
+  .header__mobile-content:has(.burger-button__toggle:checked) ~ .navigation ul li {
+    height: 100%;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+}
+
+.navigation__link-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(10px, 5.8vw, 70px);
+}
+@media (max-width: 741px) {
+  .navigation__link-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.burger-button__toggle {
+  display: none;
+}
+.burger-button__toggle:checked + .burger-button__container .burger-button__svg::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+.burger-button__toggle:checked + .burger-button__container .burger-button__svg {
+  background: none;
+}
+.burger-button__toggle:checked + .burger-button__container .burger-button__svg::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+.burger-button__container {
+  display: none;
+  height: 18px;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 741px) {
+  .burger-button__container {
+    display: flex;
+  }
+}
+.burger-button__svg::before {
+  content: "";
+  margin-top: -8px;
+}
+.burger-button__svg::after {
+  content: "";
+  margin-top: 8px;
+}
+.burger-button__svg, .burger-button__svg::after, .burger-button__svg::before {
+  display: block;
+  background-color: black;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.header-select {
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color: black;
+  border: none;
+  outline: none;
+  background: url('data: image/svg+xml, <svg width="15" height="7.5" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L8.5 8.5" stroke="black" stroke-width="2" stroke-linecap="round"/><path d="M16 1L8.5 8.5" stroke="black" stroke-width="2" stroke-linecap="round"/></svg>') no-repeat;
+  background-position: right;
+  padding: 3px 20px 3px 0;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
 }/*# sourceMappingURL=main.css.map */

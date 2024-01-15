@@ -1,0 +1,184 @@
+@use '../abstract/mixins' as m;
+@use '../abstract/variables' as v;
+
+.header {
+    background-color: black;
+    padding-top: 44px;
+
+    &__logo-link {
+        width: clamp(130px, 30vw, 220px);
+    }
+
+    &__wrapper {
+        background-color: white;
+        position: relative;
+        @include m.flexContainer(row, space-between, center);
+        height: 64px;
+    }
+
+    &__navigation {
+        @include m.flexContainer(row, center, center);
+        margin-left: clamp(20px, 5vw, 60px);
+        @media (max-width: 741px) {
+            @include m.flexContainer(column, start, center);
+            position: absolute;
+            left: 50%;
+            top:64px;
+            transform: translateX(-50%);
+            margin-left: 0;
+            height: 0;
+            width: 100%;
+            background-color: map-get($map: v.$colors, $key: white1);
+            transition: 400ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        overflow: hidden
+
+    }
+
+    &__buttons-group {
+        @include m.flexContainer(row, center, center);
+        gap: clamp(10px, 1.5vw, 50px);
+        margin-left: clamp(20px, 5vw, 60px);
+
+        @media (max-width: 741px) {
+            margin-top: clamp(20px, 5vw, 60px);
+            margin-left: 0;
+        }
+    }
+
+    &__desktop-profile {
+        width: clamp(20px, 6.6vw, 52px);
+        
+        @media (max-width:741px) {
+            display: none;
+        }
+    }   
+
+    &__mobile-profile {
+        width: clamp(20px, 6.6vw, 52px);
+    }   
+
+    &__mobile-content {
+        gap: 18px;
+        display: none;
+        @media (max-width:741px) {
+            @include m.flexContainer(row, center, center);
+            &:has(.burger-button__toggle) ~ .navigation ul li {
+                height: 0;
+                margin: 0;
+                transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+            }
+        
+            &:has(.burger-button__toggle:checked) ~ .header__navigation {
+                height: fit-content;
+                padding: 15px 0;
+            }
+        
+            &:has(.burger-button__toggle:checked) ~ .navigation ul li {
+                height: 100%;
+                transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+            }
+        }
+    }
+
+    
+}
+
+.navigation {
+
+    &__link-list {
+        @include m.flexContainer(row, center, center);
+        gap: clamp(10px, 5.8vw, 70px);
+        
+        @media (max-width: 741px) {
+            @include m.flexContainer(column, center, center);
+            
+        }
+    }
+}
+
+.burger-button {
+
+    
+
+    &__toggle {
+        display: none;
+
+        &:checked + .burger-button__container .burger-button__svg::before {
+            margin-top: 0px;
+            transform: rotate(405deg);
+        }
+
+        &:checked + .burger-button__container .burger-button__svg {
+            background: none;
+        }
+
+        &:checked + .burger-button__container .burger-button__svg::after {
+            margin-top: 0px;
+            transform: rotate(-405deg);
+        }
+
+    }
+
+    &__container {
+        display: none;
+        height: 18px;
+        width: 30px;
+        cursor: pointer;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        @media (max-width: 741px) {
+            display: flex;
+        }
+        
+    }
+
+    &__svg {
+
+        &::before {
+            content: '';
+            margin-top: -8px;
+        }
+
+        &::after {
+            content: '';
+            margin-top: 8px;
+        }
+    }
+
+    &__svg, &__svg::after, &__svg::before {
+        display: block;
+        background-color: map-get($map: v.$colors, $key: black1);
+        position: absolute;
+        height: 4px;
+        width: 30px;
+        transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+        border-radius: 2px;
+    }
+
+    
+}
+
+.header-select {
+    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    color: black;
+    border: none;
+    outline: none;
+
+    background: url('data: image/svg+xml, <svg width="15" height="7.5" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L8.5 8.5" stroke="black" stroke-width="2" stroke-linecap="round"/><path d="M16 1L8.5 8.5" stroke="black" stroke-width="2" stroke-linecap="round"/></svg>') no-repeat;
+    background-position: right;
+
+    padding: 3px 20px 3px 0;
+
+    cursor: pointer;
+
+    @include m.baseFont;
+    &__option {
+    }
+}
