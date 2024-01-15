@@ -1,8 +1,8 @@
 <template lang="">
     <header class="header">
         <div class="header__wrapper wrapper">
-            <NuxtLink to="/" class="header__logo-link">
-                <img class='header__logo-link' src="../assets/img/logo.svg" alt="DailyLangs">
+            <NuxtLink to="/" class="header__logo-link logo-link">
+                <img src="../assets/img/logo.svg" alt="DailyLangs">
             </NuxtLink >
             <div class='header__mobile-content'>
                 <NuxtLink class="header__mobile-profile" to="/profile">

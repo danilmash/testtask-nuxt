@@ -2,12 +2,7 @@
 @use '../abstract/variables' as v;
 
 .header {
-    background-color: black;
-    padding-top: 44px;
-
-    &__logo-link {
-        width: clamp(130px, 30vw, 220px);
-    }
+    padding-top: 16px;
 
     &__wrapper {
         background-color: white;
@@ -47,7 +42,7 @@
     }
 
     &__desktop-profile {
-        width: clamp(20px, 6.6vw, 52px);
+        width: clamp(40px, 6.6vw, 52px);
         
         @media (max-width:741px) {
             display: none;
@@ -55,7 +50,7 @@
     }   
 
     &__mobile-profile {
-        width: clamp(20px, 6.6vw, 52px);
+        width: clamp(33px, 6.6vw, 52px);
     }   
 
     &__mobile-content {

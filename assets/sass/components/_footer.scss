@@ -1,0 +1,39 @@
+@use '../abstract/variables' as v;
+@use '../abstract/mixins' as m;
+
+
+.footer {
+    background-color: map-get($map: v.$colors, $key: primary);
+    height: 100px;
+    padding: 44px 0;
+    color: map-get($map: v.$colors, $key: white1);
+    
+
+    .wrapper {
+        height: 100%;
+    }
+
+    &__links {
+        @include m.flexContainer(row, space-between, top);
+    }
+
+    &__policy-link {
+        display: block;
+        color: map-get($map: v.$colors, $key: white1);
+        
+        &:nth-child(2) {
+            margin-top: 14px;
+        }
+    }
+
+    &__logo-link {
+
+        display: block;
+        color: white;
+    }
+
+    &__rights-reserved {
+        text-align: center;
+        margin-top: clamp(25px, 5vw, 50px);
+    }
+}
