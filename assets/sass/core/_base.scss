@@ -40,3 +40,21 @@ button {
 img {
     width: 100%;
 }
+
+main {
+    flex-grow: 1;
+    padding: 64px 0;
+    background-image: url(~/assets/img/background.svg);
+    background-size: 1500px;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    @media (max-width: 1500px) {
+        background-size: cover;
+    }
+    @media (max-width: 900px) {
+        background-image: url(~/assets/img/star.svg);
+        background-size: 100px;
+        background-position-x: right;
+        background-position-y: 50px;
+    }
+}

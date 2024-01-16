@@ -14,6 +14,27 @@ body {
     }
 }
 
+.page-header {
+    font-size: 48px;
+    @media (max-width:741px) {
+        font-size: 40px;
+    }
+    @media (max-width:420px) {
+        font-size: 32px;
+    }
+    font-weight: 800;
+}
+
+.small-header {
+    font-size: 24px;
+    @media (max-width:741px) {
+        font-size: 20px;
+    }
+    @media (max-width:420px) {
+        font-size: 18px;
+    }
+}
+
 * {
     font-family: 'Mulish';
 }

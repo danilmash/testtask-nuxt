@@ -1,14 +1,15 @@
 <template lang="">
-    <input type="radio" v-model='model' :value='value' :id='id' />
+    <input type="radio" v-model='model' :value='value' :id='id' :name='name'/>
     <label :for='id'>{{ label }}</label>
 </template>
 <script setup>
     import { computed } from "vue";
     const props = defineProps({
-        modelValue: { type: [Array, Boolean] },
+        modelValue: { type: [Array, Boolean, String] },
         value: { type: [Object, String, Boolean] },
         label: { type: String },
         id: { type: String },
+        name: {type: String}
     })
     const emit = defineEmits(['update:modelValue'])
     const model = computed({

@@ -7,7 +7,7 @@
             <div class='header__mobile-content'>
                 <NuxtLink class="header__mobile-profile" to="/profile">
                             <img src="../assets/img/profile.svg" alt="Profile">
-                        </NuxtLink>
+                </NuxtLink>
                 <div class="header__burger-button burger-button">
                     <input class="burger-button__toggle" id="burger-toggle" type="checkbox" />
                     <label class='burger-button__container' for="burger-toggle">

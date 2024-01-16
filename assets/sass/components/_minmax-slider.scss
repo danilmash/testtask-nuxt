@@ -1,4 +1,6 @@
-@use '../abstract/variables';
+@use '../abstract/variables' as v;
+@use '../abstract/mixins' as m;
+
 
 
 
@@ -6,8 +8,10 @@
     position: relative;
     --trackHeight: 0.2rem;
     --thumbRadius: 0.8rem;
-    width: 100px;
-
+    width: 150px;
+    height: var(--thumbRadius);
+    @include m.flexContainer(row, flex-start, center);
+    
     
 
     input {
@@ -15,12 +19,12 @@
         position: absolute;
         pointer-events: none;
         appearance: none;
-
+        width: 100%;
         &::before {
             content: "";
             position: absolute;
             height: var(--trackHeight);
-            background: map-get($map: variables.$colors, $key: primary);
+            background: map-get($map: v.$colors, $key: primary);
             border-radius: 100px;
             left: var(--progressLeft);
             right: var(--progressRight);
@@ -49,7 +53,7 @@
             width: var(--thumbRadius);
             height: var(--thumbRadius);
             /* margin-top: calc((var(--trackHeight) - var(--thumbRadius)) / 2); */
-            background: map-get($map: variables.$colors, $key: primary);
+            background: map-get($map: v.$colors, $key: primary);
             border-radius: 50%;
             pointer-events: all;
             appearance: none;

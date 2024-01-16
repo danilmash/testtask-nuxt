@@ -1,0 +1,268 @@
+@use '../abstract/mixins' as m;
+@use '../abstract/variables' as v;
+
+.courses {
+    @media (max-width: 770px) {
+        @include m.flexContainer(column, space-around, flex-start)
+    }
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        @media (max-width: 1141px) {
+            @include m.flexContainer(column, space-around, flex-start)
+        }
+    }
+
+    &__header {
+        @media (max-width: 500px) {
+            font-size: 32px;
+        }
+        @media (max-width: 1141px) {
+            margin-top: 32px;
+        }
+    }
+
+    &__buttons {
+        @include m.flexContainer(row, flex-start, center);
+        gap: 8px;
+    }
+
+    &__filters-open {
+        display: none;
+        background-color: map-get($map: v.$colors, $key: primary);
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        padding: 12px;
+
+        @media (max-width: 1141px) {
+            display: block;
+        }
+    }
+
+    &__filters {
+        margin-top: 64px;
+        @media (max-width: 1141px) {
+            display: none;
+        }
+    }
+
+    &__select {
+        
+    }
+
+    &__right-column {
+        width: 100%;
+    }
+
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        column-gap: clamp(20px, 2.7vw, 52px);
+        row-gap: 32px;
+        margin-top: 64px;
+        max-width: 850px;  
+        @media (max-width: 820px) {
+            max-width: none;  
+        }    
+    }
+
+    &__card {
+        max-width: 410px;
+        
+    }
+}
+
+.course-card {
+    position: relative;
+    aspect-ratio: 6/5;
+    background-repeat: no-repeat;
+    background-position-x: left;
+    background-position-y: bottom;
+    background-size: contain;
+    background-color: map-get($map: v.$colors, $key: primary);
+
+    border-radius: 30px;
+    padding: 24px;
+
+    color: map-get($map: v.$colors, $key: white1);
+
+    @include m.flexContainer(column, space-between, flex-start);
+
+    &__header {
+        font-weight: 800;
+    }
+
+    &__author {
+        position: absolute;
+        padding: 5px 16px;
+        color: map-get($map: v.$colors, $key: black1);
+        background-color: map-get($map: v.$colors, $key: secondary);
+        border-radius: 60px;
+        font-weight: 600;
+        font-size: 14px;
+        top: 28%;
+        left: 38%;
+
+
+        &::before {
+            content: url(~/assets/img/green_triangle.svg);
+            position: absolute;
+            left: -15px;
+            bottom: -20px;
+        }
+    }
+
+    &__language {
+        position: absolute;
+        bottom: 12px;
+        left: 100px;
+        width: 66px;
+        aspect-ratio: 1;
+    }
+
+    &__highlight {
+        color: #FFFD50;
+    }
+
+    &__link {
+        cursor: pointer;
+        color: map-get($map: v.$colors, $key: white1);
+        @include m.flexContainer(row, center, center);
+        margin-left: auto;
+        gap: 8px;
+        &:hover {
+            color: map-get($map: v.$colors, $key: highlight2);
+        }
+    }
+
+    &__price-container {
+        font-weight: 800;
+        position: absolute;
+        bottom: 120px;
+        right: 80px;
+    }
+
+    &__discount-price {
+        font-size: 40px;
+        line-height: 120%;
+    }
+
+    &__price {
+        line-height: 120%;
+        font-size: 20px;
+        position: absolute;
+        text-align: right;
+        right: 0;
+        width: fit-content;
+        transform: translateX(20px);
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            border: map-get($map: v.$colors, $key: highlight1) 1px solid
+        }
+    }
+
+    &__discount {
+        position: absolute;
+        font-weight: 600;
+        font-size: 12px;
+        top: -22px;
+        right: -33px;
+        padding: 0 7px;
+        border-radius: 20px;
+        background-color: map-get($map: v.$colors, $key: highlight1)
+    }
+}
+
+.courses-filters {
+
+    &__inputs {
+        @include m.flexContainer(column, center, flex-start);
+        margin-top: 32px;
+        gap: 10px;
+    }
+
+    &__header {
+        margin-top: 44px;
+        font-weight: 600;
+    }
+
+    &__slider {
+        margin-top: 10px;
+    }
+}
+
+.courses-select {
+    position: relative;
+    z-index: 1;
+    border-radius: 25px;
+    padding: 15px clamp(44px, 10vw, 60px);
+    width: fit-content;
+    background-color: map-get($map: v.$colors, $key: primary);
+    color: map-get($map: v.$colors, $key: white1);
+    cursor: pointer;
+    @media (max-width: 1141px) {
+        display: block;
+    }
+    &__shown {
+        @include m.flexContainer(row, space-between, center);
+        gap: 15px;
+    }
+
+    &__options {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        @include m.flexContainer(column, space-between, center);
+        display: none;
+        width: 100%;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        z-index: 2;
+        cursor: pointer;
+
+        li {
+            cursor: pointer;
+            display: none;
+            padding: 8px 20px;
+            width: 100%;
+            &:last-child {
+                border-bottom-left-radius: 25px;
+                border-bottom-right-radius: 25px;
+            }
+            &:hover {
+                background-color: map-get($map: v.$colors, $key: highlight1);
+            }
+
+            
+        }
+    }
+
+    &.opened {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        ul {
+            display: flex;
+            background-color: map-get($map: v.$colors, $key: primary);
+            
+            li {
+                display: block;
+            }
+        }
+    }
+}
+
+.language-highlight {
+    padding: 16px;
+    border-radius: 100px;
+    background-color: map-get($map: v.$colors, $key: secondary);
+    @media (max-width: 620px) {
+        display: block;
+        width: fit-content;
+    }
+}

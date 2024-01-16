@@ -15,7 +15,7 @@
         @include m.flexContainer(row, center, center);
         margin-left: clamp(20px, 5vw, 60px);
         @media (max-width: 741px) {
-            @include m.flexContainer(column, start, center);
+            @include m.flexContainer(column, flex-start, center);
             position: absolute;
             left: 50%;
             top:64px;

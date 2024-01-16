@@ -4,7 +4,6 @@
 
 .footer {
     background-color: map-get($map: v.$colors, $key: primary);
-    height: 100px;
     padding: 44px 0;
     color: map-get($map: v.$colors, $key: white1);
     
